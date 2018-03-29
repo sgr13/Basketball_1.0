@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-xs-2">
+
+        </div><div class="col-xs-8">
+
+            {{ form_start(form) }}
+            {{ form_row(form.login) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.plainPassword.first, {
+                'label' : 'Hasło'
+            }) }}
+            {{ form_row(form.plainPassword.second, {
+                'label' : 'Powtórz hasło:'
+            }) }}
+
+            <button type =submit class="btrn btn-success" formnovalidate>Rejestruj</button>
+            {{ form_end(form) }}
+
+        </div><div class="col-xs-2">
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            {% if error %}
+                <div class="alert alert-danger ">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+            <h1>Logowanie</h1>
+
+            {{ form_start(form) }}
+                {{ form_row(form.login) }}
+                {{ form_row(form.password) }}
+
+                <button class="btn btn-success">Zaloguj</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
