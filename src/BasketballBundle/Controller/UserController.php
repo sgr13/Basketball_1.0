@@ -29,7 +29,7 @@ class UserController extends Controller
         if ($form->isValid()) {
             /** @var User $user */
             $user = $form->getData();
-            $user->setRoles(array(0 => 'ROLE_USER'));
+            $user->setRoles('ROLE_USER');
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
