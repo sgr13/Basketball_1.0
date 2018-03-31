@@ -9,6 +9,7 @@
 namespace BasketballBundle\Controller\Admin;
 
 
+use BasketballBundle\Form\CalendarType;
 use BasketballBundle\Services\Calendar;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -54,21 +55,25 @@ class AdminController extends Controller
      */
     public function addNextGameAction(Request $request)
     {
-        $presentDay = $this->calendar->getPresentDayCalendar();
-        dump($presentDay);
-        dump($this->calendar);
-        if($request->request->get('selectedMonth') && $request->request->get('selectedYear')){
+//        $presentDay = $this->calendar->getPresentDayCalendar();
+//        dump($presentDay);
+//        dump($this->calendar);
+//        if($request->request->get('selectedMonth') && $request->request->get('selectedYear')){
+//
+//            $selectedMonth = $request->request->get('selectedMonth');
+//            $selectedYear = $request->request->get('selectedYear');
+//            $calendar = $this->calendar->getChosenDayCalendar($selectedMonth, $selectedYear);
+//
+//            return new JsonResponse($calendar);
+//        }
 
-            $selectedMonth = $request->request->get('selectedMonth');
-            $selectedYear = $request->request->get('selectedYear');
-            $calendar = $this->calendar->getChosenDayCalendar($selectedMonth, $selectedYear);
+        $form = $this->createForm(CalendarType::class);
+        dump($form);
 
-            return new JsonResponse($calendar);
-        }
 
         return $this->render('Admin/add_next_game.html.twig', array(
-            'calendar' => $this->calendar,
-            'presentDay' => $presentDay
+            'form' => $form->createView(),
+//            'presentDay' => $presentDay
         ));
     }
 }

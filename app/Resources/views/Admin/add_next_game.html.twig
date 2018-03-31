@@ -1,6 +1,20 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Panel Administratora{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">#}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/addNextGame.js') }}"></script>
+{%  endblock %}
+
 
 {% block body %}
 
@@ -13,29 +27,20 @@
         <h3>Wybierz dzień spotkania:</h3>
     </div>
     <div id="calendar">
-        <form id="form">
-            <select id="selectMonth" month="{{ presentDay.month }}">
-                <option value="01" id="jan" class="month">Styczeń</option>
-                <option value="02" id="feb" class="month">Luty</option>
-                <option value="03" id="mar" class="month">Marzec</option>
-                <option value="04" id="apr" class="month">Kwiecień</option>
-                <option value="05" id="may" class="month">Maj</option>
-                <option value="06" id="jun" class="month">Czerwiec</option>
-                <option value="07" id="jul" class="month">Lipiec</option>
-                <option value="08" id="aug" class="month">Sierpień</option>
-                <option value="09" id="sep" class="month">Wrzesień</option>
-                <option value="10" id="oct" class="month">Październik</option>
-                <option value="11" id="nov" class="month">Listopad</option>
-                <option value="12" id="dec" class="month">Grudzień</option>
-            </select>
-            <select id="selectYear" year="{{ presentDay.year }}">
-                <option value="2017" id="2017" class="year">2017 </option>
-                <option value="2018" id="2018" class="year">2018</option>
-                <option value="2019" id="2019" class="year">2019</option>
-                <option value="2020" id="2020" class="year">2020</option>
-            </select>
-        </form>
+        <div class="col-xs-5">
+
+        </div>
+        <div class="col-xs-2">
+            {{ form_start(form) }}
+            {{ form_row(form.date) }}
+            {{ form_end(form) }}
+        </div>
+        <div class="col-xs-5">
+
+        </div>
+
     </div>
+
 
 
 {% endblock %}
