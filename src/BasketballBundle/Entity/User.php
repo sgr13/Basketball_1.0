@@ -19,6 +19,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User implements UserInterface
 {
     /**
+     * @ORM\OneToOne(targetEntity="Player", mappedBy="user")
+     */
+    private $player;
+
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
@@ -128,5 +133,20 @@ class User implements UserInterface
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+
+    /**
+     * @param mixed $player
+     */
+    public function setPlayer($player)
+    {
+        $this->player = $player;
+    }
 
 }

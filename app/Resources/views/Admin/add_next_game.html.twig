@@ -6,7 +6,9 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {#<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">#}
+
+    <link rel="stylesheet" href="{{ asset('css/adminPanel.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 {% endblock %}
 
 
@@ -17,30 +19,66 @@
 
 
 {% block body %}
-
-    <div class="panel panel-success">
-        <div class="panel-heading" style="position:relative">
-            <h3 >Dodaj najbliższy mecz</h3>
-            <a href="{{ path('adminPanel') }}"><button class="btn btn-danger"><span>Wróć</span></button></a>
+    <a class="mainPanel" href="{{ path('adminPanel') }}"><button class="btn btn-danger"><span>Wróć</span></button></a>
+<div id="cont">
+    <div class="panel panel-success" id="addNextGamePanel">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 >Dodaj najbliższy mecz</h3>
+            </div>
         </div>
-    <div id="calendarHeader">
-        <h3>Wybierz dzień spotkania:</h3>
+        <div class="panel-body">
+            <h1></h1>
+            <div id="calendarHeader">
+                <h3>1. Wybierz dzień spotkania:</h3>
+            </div>
+            <div id="calendar">
+                <div class="col-xs-5">
+
+                </div>
+                <div class="col-xs-2">
+                    {{ form_start(form) }}
+                    {{ form_row(form.date) }}
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-xs-5">
+
+                </div>
+
+            </div>
+            <div id="placeHeader" class="col-xs-12">
+                <h3>2. Wybierz miejsce spotkania:</h3>
+                <div id="placeSelection">
+                    <div class="col-xs-5">
+                    </div>
+                    <div class="col-xs-2">
+                        <select class="form-control" id="placeSelector">
+                            <option value=""></option>
+                            <option value="Sztygarka">Sztygarka</option>
+                            <option value="Mydlice">Mydlice</option>
+                            <option value="Centrum">Centrum</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-5">
+                    </div>
+                </div>
+            </div>
+            <div id="finalData" date="" place="" class="col-xs-12">
+                <h3> </h3>
+                <div id="confirmButtonspot">
+                    <div class="col-xs-5">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-success btn-lg" id="acceptButton">Dodaj</button>
+                    </div>
+                    <div class="col-xs-5">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="panel-footer">Panel Footer</div>
     </div>
-    <div id="calendar">
-        <div class="col-xs-5">
-
-        </div>
-        <div class="col-xs-2">
-            {{ form_start(form) }}
-            {{ form_row(form.date) }}
-            {{ form_end(form) }}
-        </div>
-        <div class="col-xs-5">
-
-        </div>
-
-    </div>
-
+</div>
 
 
 {% endblock %}

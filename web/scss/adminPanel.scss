@@ -1,0 +1,58 @@
+.panel-heading {
+  color: black !important;
+}
+
+.mainPanel {
+  position: fixed;
+  left:3px;
+  top: 3px;
+}
+
+#addNextGamePanel {
+  background-color: rgba(246,246,246, 1) !important;
+}
+
+.panel-heading {
+  height: 15vh;
+}
+
+.panel-body {
+  height: 70vh;
+  //height: 100vh;
+  overflow-y: auto;
+}
+
+.panel-footer {
+  height: 12vh;
+}
+
+.centerText {
+  text-align: center;
+}
+
+#calendarHeader, .panel-heading, #placeHeader, #finalData {
+    text-align: center;
+}
+
+#acceptButton {
+  visibility: hidden;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="file"] {
+  display: none;
+}
+.label-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#basketball_bundle_player_type_photoFront, #addPlayerToUserForm {
+    visibility: hidden;
+}

@@ -9,8 +9,9 @@
 namespace BasketballBundle\Controller\Admin;
 
 
+use BasketballBundle\Entity\Player;
 use BasketballBundle\Form\CalendarType;
-use BasketballBundle\Services\Calendar;
+use BasketballBundle\Form\PlayerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,18 +26,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AdminController extends Controller
 {
-
-    /**
-     * @var Calendar
-     */
-    private $calendar;
-
-    public function __construct()
-    {
-
-        $this->calendar = new Calendar();
-    }
-
     /**
      * @Route("/adminPanel", name="adminPanel")
      */
@@ -49,31 +38,76 @@ class AdminController extends Controller
 
     /**
      * @Route("/addNextGame", name="addNextGame")
-     * @param Request $request
-     * @param Calendar $calendar
-     * @return JsonResponse|Response
      */
-    public function addNextGameAction(Request $request)
+    public function addNextGameAction()
     {
-//        $presentDay = $this->calendar->getPresentDayCalendar();
-//        dump($presentDay);
-//        dump($this->calendar);
-//        if($request->request->get('selectedMonth') && $request->request->get('selectedYear')){
-//
-//            $selectedMonth = $request->request->get('selectedMonth');
-//            $selectedYear = $request->request->get('selectedYear');
-//            $calendar = $this->calendar->getChosenDayCalendar($selectedMonth, $selectedYear);
-//
-//            return new JsonResponse($calendar);
-//        }
 
         $form = $this->createForm(CalendarType::class);
-        dump($form);
-
-
         return $this->render('Admin/add_next_game.html.twig', array(
             'form' => $form->createView(),
-//            'presentDay' => $presentDay
         ));
+    }
+
+    /**
+     * @Route("/stepTwo/{date}/{place}", name="stem_two")
+     */
+    public function stepTwoAction($date, $place)
+    {
+        $em = $this->getDoctrine()->getManager();
+        dump($em);
+//        dump($date);
+//        dump($place);
+        die;
+    }
+
+    /**
+     * @Route("/addPlayerToUser", name="addPlayerToUser")
+     */
+    public function addPlayerToUserAction(Request $request)
+    {
+//        dump('ok');die;
+        if ($request->request->get('userId')) {
+
+            return new JsonResponse('jest super');
+        }
+
+        $form = $this->createForm(PlayerType::class);
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()) {
+            dump($form->getData());die;
+        }
+
+        $users = $this->getDoctrine()->getRepository('BasketballBundle:User')->findAll();
+        return $this->render('Admin/addPlayerToUser.html.twig', array(
+            'users' => $users,
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/addPlayerToUserStepTwo", name="addPlayerToUserStepTwo")
+     */
+    public function addPlayerToUserStepTwoAction(Request $request)
+    {
+        $player = new Player();
+
+//        dump($player);die;
+//        $form = null;
+//
+//        if ($form->isValid()) {
+//
+//        }
+
+        $users = $this->getDoctrine()
+            ->getRepository('BasketballBundle:User')
+            ->find($request->request->get('userId'));
+
+        if ($request->request->get('userId')) {
+            $form = $this->createForm(PlayerType::class);
+            dump($form);
+            return new JsonResponse($form);
+        }
+
     }
 }
