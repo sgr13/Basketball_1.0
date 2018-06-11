@@ -1,0 +1,195 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Witaj na www.slawek.grupakmk.pl!</title>
+    <style type="text/css">
+        body {
+            background-color: lightblue;
+        }
+
+        #scena {
+            width: 200px;
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        #kostka {
+            position: absolute;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+            /*transform: rotateY(45deg);*/
+
+            animation: obracanie 12s infinite alternate;
+        }
+
+        .sciana {
+            backface-visibility: hidden;
+            opacity: 0.5;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            font-size: 20px;
+            color: black;
+            line-height: 180px;
+            text-align: center;
+        }
+
+        div.front {
+            background-color: red;
+            transform: translateZ(100px);
+        }
+        div.back {
+            background-color: blue;
+            transform: rotateX(180deg) translateZ(100px);
+        }
+        div.left {
+            background-color: yellow;
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        div.right {
+            background-color: brown;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        div.top {
+            background-color: orange;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        div.bottom {
+            background-color: purple;
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        .checkmark {
+            display:inline-block;
+            width: 22px;
+            height:22px;
+            -ms-transform: rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+            transform: rotate(45deg);
+        }
+
+        .checkmark_circle {
+            position: absolute;
+            width:40px;
+            height:40px;
+            background-color: green;
+            border-radius:20px;
+            left:0px;
+            top:0px;
+        }
+
+        .checkmark_stem {
+            position: absolute;
+            width:7.5px;
+            height:22.5px;
+            background-color:#fff;
+            left:19px;
+            top:8px;
+        }
+
+        .checkmark_kick {
+            position: absolute;
+            width:8px;
+            height:8px;
+            background-color:#fff;
+            left:12px;
+            top:23px;
+        }
+
+        .text {
+            height: 60%;
+        }
+
+        .mark {
+            height: 40%;
+        }
+
+        @keyframes obracanie  {
+            from
+            {
+
+            }
+            to
+            {
+                transform: rotateY(480deg) rotateX(720deg) ;
+            }
+        }
+
+    </style>
+</head>
+    <body>
+    <div id="container">
+        <div id="scena">
+            <div id="kostka">
+                <div class="sciana front">
+                    <div class="text">
+                        <span>MySQL/PHP</span>
+                    </div>
+                    <div class="mark">
+                        <span class="checkmark">
+                        <div class="checkmark_circle"></div>
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                    </div>
+                </div>
+                <div class="sciana back">
+                    <div class="text">
+                        <span>
+                            NGINX
+                        </span>
+                    </div>
+                    <div class="mark">
+                        <span class="checkmark">
+                            <div class="checkmark_circle"></div>
+                            <div class="checkmark_stem"></div>
+                            <div class="checkmark_kick"></div>
+                        </span>
+                    </div>
+                </div>
+                <div class="sciana left">
+                    <div class="text">
+                        <span>SSH/Firewall</span>
+                    </div>
+                    <div class="mark">
+                        <span class="checkmark">
+                            <div class="checkmark_circle"></div>
+                            <div class="checkmark_stem"></div>
+                            <div class="checkmark_kick"></div>
+                        </span>
+                    </div>
+                </div>
+                <div class="sciana right">
+                    <div class="text">
+                        <span>Domena & /home/www</span>
+                    </div>
+                    <div class="mark">
+                        <span class="checkmark">
+                            <div class="checkmark_circle"></div>
+                            <div class="checkmark_stem"></div>
+                            <div class="checkmark_kick"></div>
+                        </span>
+                    </div>
+                </div>
+                <div class="sciana top">
+                    <div class="text">
+                    <span>MariaDB</span>
+                    </div>
+                </div>
+                <div class="sciana bottom">
+                    <div class="text">
+                    <span>SSL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+

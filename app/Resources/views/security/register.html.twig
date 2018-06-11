@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rejestracja użytkownikar{% endblock %}
+
+{% block body %}
+    <div id="mainContainerBackground">
+    </div>
+    <div id="mainContainer">
+        <div id="registerContainer">
+            <div id ="registerHeader"><span>Rejestracja</span></div>
+            <div id = "registerBody">
+                <div id="registerInputs">
+                    {{ form_start(form) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.plainPassword.first) }}
+                    {{ form_row(form.plainPassword.second) }}
+
+                    <button type="submit">Register!</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

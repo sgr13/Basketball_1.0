@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Basket - DG{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+
+{%  block body %}
+
+    <div id="mainContainerBackground">
+        {#<img src="{{ asset('img/third_back.jpg') }}">#}
+    </div>
+    <div id="mainContainer">
+    </div>
+    <div class="side_bar_container both">
+        <div id="main_logo">
+            <a href="#"><img src="{{ asset('img/basket_logo.png') }}"></a>
+        </div>
+        <div id="main_menu">
+            <img src="{{ asset('img/menubut.png') }}" id="menu_icon">
+            <img src="{{ asset('img/close.png') }}" id="close_button">
+            <ul id="menu_list">
+                <li>Wpisz się!</li>
+                <li>Najbliższy mecz</li>
+                <li>Historia spotkań</li>
+                <li>Zawodnicy grający</li>
+                <li>Panel Użytkownika</li>
+            </ul>
+        </div>
+        <div id="bottom_menu">
+            <a href="#"><img src="{{ asset('img/login.png') }}"></a>
+        </div>
+    </div>
+
+{% endblock %}

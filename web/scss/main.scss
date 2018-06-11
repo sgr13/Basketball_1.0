@@ -1,0 +1,269 @@
+@font-face {
+    font-family: lato-regular;
+    src: url(../fonts/lato/Lato-Regular.ttf);
+}
+@font-face {
+    font-family: lato-bold;
+    src: url(../fonts/lato/Lato-Bold.ttf);
+}
+@font-face {
+    font-family: lato-light;
+    src: url(../fonts/lato/Lato-Regular.ttf);
+}
+
+@media screen and (min-width: 700px) {
+
+    @import "background.scss";
+
+    //side-bar - rozwinięty oraz schowany
+    .both {
+        background-color: black;
+        z-index: 2;
+        position: relative;
+        left: 94%;
+        height: 100%;
+        transition: 0.5s;
+    }
+
+    //side-bar schowany
+    .side_bar_container {
+        width: 6%;
+
+        #main_logo {
+            width: 100%;
+            //background-color: #0000F0;
+            height: 12%;
+        }
+
+        #main_menu {
+            width: 100%;
+            //background-color: #6b9311;
+            height: 60%;
+
+            img:hover {
+                cursor: pointer;
+            }
+
+            #close_button {
+                display: none;
+            }
+
+            #menu_list {
+                display: none;
+            }
+        }
+
+        #bottom_menu {
+            width: 100%;
+            //background-color: #6c6159;
+            height: 28%;
+        }
+    }
+
+    //side-bar rozwinięty
+    .parallelogram {
+        width: 23%;
+        height: 100%;
+        left: 77%;
+
+        #main_logo img {
+            left: 40%;
+        }
+
+        #menu_icon {
+            display: none;
+        }
+
+        #close_button {
+            display: inline !important;
+            width: 4vw;
+            left: 1vw;
+            z-index: 2;
+        }
+
+        #close_button:hover {
+            cursor: pointer;
+        }
+
+        #bottom_menu img {
+            left: 40%;
+        }
+    }
+
+    //wymiary i pozycja logo-piłka
+    #main_logo img {
+        width: 4vw;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        top: 2%;
+        transition: 0.5s;
+    }
+
+    //wymiary i pozycja logo menu
+    #main_menu img {
+        width: 4vw;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        top: 42%;
+        transition: 0.5s;
+    }
+
+    //ikona logowania/wylogowania
+    #bottom_menu img {
+        width: 4vw;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        top: 90%;
+        transition: 0.5s;
+    }
+
+    //lista menu
+    #menu_list {
+        display: none;
+        position: absolute;
+        top: 16vh;
+        padding-left: 7vw;
+        text-decoration: none;
+        list-style-type: none;
+        line-height: 12vh;
+        //font-size: 150%;
+        color: whitesmoke;
+        font-size: 1.6vw;
+        font-family: lato-regular, sans-serif;
+    }
+
+    #menu_list li:hover {
+        font-size: 110%;
+        color: gray;
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    @import "background_mobile.scss";
+
+    .both {
+        background-color: rgba(0,0,0,0);
+        z-index: 2;
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        transition: 0.5s;
+    }
+
+    .side_bar_container {
+        height: 10vw;
+        display: flex;
+
+        #main_logo {
+            width: 20%;
+            height: 100%;
+            display: none;
+            //background-color: #0000F0;
+            //height: 12%;
+        }
+
+        #main_menu {
+            width: 60%;
+            //background-color: #6b9311;
+            height: 100%;
+
+            img:hover {
+                cursor: pointer;
+            }
+
+            #close_button {
+                display: none;
+            }
+
+            #menu_list {
+                display: none;
+            }
+        }
+
+        #bottom_menu {
+            width: 20%;
+            //background-color: #6c6159;
+            height: 100%;
+            display: none;
+        }
+    }
+
+    //wymiary i pozycja logo-piłka
+    #main_logo img {
+        width: 5.7vw;
+        position: absolute;
+        left: 5%;
+        top: 18%;
+        transition: 0.5s;
+    }
+
+    //wymiary i pozycja logo menu
+    #main_menu img {
+        width: 6vw;
+        position: absolute;
+        left: 50%;
+        top: 22%;
+        transition: 0.5s;
+    }
+
+    //ikona logowania/wylogowania
+    #bottom_menu img {
+        width: 6vw;
+        position: absolute;
+        left: 88%;
+        top: 18%;
+        transition: 0.5s;
+    }
+
+
+    //side-bar rozwinięty
+    .parallelogram {
+        width: 100%;
+        height: 10vw;
+        left: 0;
+        background-color: black;
+
+        #main_logo img {
+            left: 5vw;
+            display: inline;
+        }
+
+        #menu_icon {
+            display: none;
+        }
+
+        #close_button {
+            display: inline !important;
+            width: 4vw;
+            left: 50vw;
+            top: 3vw;
+            z-index: 2;
+            transition: 1.5s;
+        }
+
+        #close_button:hover {
+            cursor: pointer;
+        }
+
+        #bottom_menu img {
+            left: 88vw;
+        }
+
+        #menu_list {
+            display: none !important;
+        }
+    }
+
+
+    //
+    //img {
+    //    display: none;
+    //}
+}
+

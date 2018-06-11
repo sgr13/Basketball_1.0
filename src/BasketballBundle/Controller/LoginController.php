@@ -2,24 +2,25 @@
 namespace BasketballBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 class LoginController extends Controller
 {
     /**
-     * @Route("/logina", name="login2")
+     * @Route("/login", name="login")
      */
-    public function loginAction()
+    public function loginAction(Request $request, AuthenticationUtils $authenticationUtils)
     {
         if ($this->getUser()) {
             return $this->redirect('/');
         }
 
-        $authenticationUtils = $this->get('security.authentication_utils');
         $errors = $authenticationUtils->getLastAuthenticationError();
         $lastUserName = $authenticationUtils->getLastUsername();
-
         return $this->render('security/login.html.twig', array(
             'errors' => $errors,
-            'username' => $lastUserName
+            'login' => $lastUserName
         ));
     }
 

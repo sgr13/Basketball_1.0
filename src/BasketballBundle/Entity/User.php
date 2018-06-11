@@ -1,136 +1,130 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: slawek
- * Date: 24.03.18
- * Time: 17:35
- */
 
 namespace BasketballBundle\Entity;
 
 
-use Symfony\Component\Security\Core\Role\Role;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
- * @ORM\Entity
+ * User
+ *
  * @ORM\Table(name="user")
+ * @ORM\Entity
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
+
     /**
      * @ORM\OneToOne(targetEntity="Player", mappedBy="user")
      */
     private $player;
 
+
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $login;
-
-    /**
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
+
     /**
-     * The encoded password
-     *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $password;
+    private $username;
+
     /**
-     * A non-persisted field that's used to create the encoded password.
      *
-     * @var string
      */
     private $plainPassword;
+
     /**
-     * @ORM\Column(type="string")
+     * The below length depends on the "algorithm" you use for encoding
+     * the password, but this works well with bcrypt.
+     *
+     * @ORM\Column(type="string", length=64)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="array")
      */
     private $roles;
-    // needed by the security system
-    public function getUsername()
-    {
-        return $this->email;
+
+    public function __construct() {
+        $this->roles = array('ROLE_ADMIN');
     }
-    public function getRoles()
-    {
-        $roles[] = $this->roles;
-        // give everyone ROLE_USER!
-        if (empty($roles) || !isset($roles)) {
-            $roles[] = 'ROLE_USER';
-        }
-        return $roles;
-    }
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-    }
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    public function getSalt()
-    {
-        // leaving blank - I don't need/have a password!
-    }
-    public function eraseCredentials()
-    {
-        $this->plainPassword = null;
-    }
+
+    // other properties and methods
+
     public function getEmail()
     {
         return $this->email;
     }
+
     public function setEmail($email)
     {
         $this->email = $email;
     }
-    public function setPassword($password)
+
+    public function getUsername()
     {
-        $this->password = $password;
+        return $this->username;
     }
+
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
     public function getPlainPassword()
     {
         return $this->plainPassword;
     }
-    public function setPlainPassword($plainPassword)
+
+    public function setPlainPassword($password)
     {
-        $this->plainPassword = $plainPassword;
-        // forces the object to look "dirty" to Doctrine. Avoids
-        // Doctrine *not* saving this entity, if only plainPassword changes
-        $this->password = null;
+        $this->plainPassword = $password;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLogin()
+    public function getPassword()
     {
-        return $this->login;
+        return $this->password;
     }
 
-    /**
-     * @param mixed $login
-     */
-    public function setLogin($login)
+    public function setPassword($password)
     {
-        $this->login = $login;
+        $this->password = $password;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getSalt()
     {
-        return $this->id;
+        // The bcrypt and argon2i algorithms don't require a separate salt.
+        // You *may* need a real salt if you choose a different encoder.
+        return null;
+    }
+
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
     }
 
     /**
@@ -148,5 +142,6 @@ class User implements UserInterface
     {
         $this->player = $player;
     }
+
 
 }

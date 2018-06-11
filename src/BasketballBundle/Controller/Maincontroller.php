@@ -29,7 +29,7 @@ class Maincontroller extends Controller
      */
     public function mainAction()
     {
-        return new Response('<html><body><h1>Strona główna</h1></body></html>');
+        return $this->render('Main/main.html.twig', array());
     }
 
     /**
@@ -38,5 +38,13 @@ class Maincontroller extends Controller
     public function successAction()
     {
         return new Response('<html><body><h1>Witaj zalogowany użytkowniku!!!</h1></body></html>');
+    }
+
+    /**
+     * @Route("/test")
+     */
+    public function testAction()
+    {
+        return $this->render('user/test.html.twig', array());
     }
 }

@@ -25,6 +25,14 @@ services:
     BasketballBundle\Services\Calendar:
         public: true
 
+    BasketballBundle\Controller\RegisterController:
+        autowire: true # or define your controller constructor and configure its arguments explicitly
+        tags: ['controller.service_arguments']
+
+    BasketballBundle\Controller\LoginController:
+        autowire: true # or define your controller constructor and configure its arguments explicitly
+        tags: ['controller.service_arguments']
+
     BasketballBundle\Security\LoginFormAuthenticator:
         arguments:
             - '@form.factory'

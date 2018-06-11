@@ -10,9 +10,22 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function(success) {
-                $('#addPlayerToUserForm').css('visibility', 'visible');
+
+
+                if (success.slice(0,1) == 'p') {
+                    window.location.replace("playerEditByAdmin/" + success.match(/\d+/));
+                } else {
+                    $('#addPlayerToUserForm').css('visibility', 'visible');
+                    assignUserIdToForm(success.match(/\d+/));
+                }
             }
         });
     });
+
+    function assignUserIdToForm(userId)
+    {
+        $('#basketball_bundle_player_type_user option:first').val(userId);
+        $('#basketball_bundle_player_type_user option:first').attr('selected','selected');
+    }
 
 });
